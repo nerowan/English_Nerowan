@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nerowan's Elite English Mastery</title>
+  <title>Nerowan's English Learning Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     /* =================== Global Reset & Base Styles =================== */
@@ -20,6 +20,7 @@
       list-style: none;
     }
     body {
+      /* 渐变背景 */
       background: linear-gradient(120deg, #ece9e6 0%, #ffffff 100%);
       color: #333;
       transition: background-color 0.4s, color 0.4s;
@@ -55,7 +56,7 @@
       transform: scale(1.05);
     }
 
-    /* Default nav for desktop */
+    /* Desktop nav */
     nav ul {
       display: flex;
       gap: 1rem;
@@ -119,52 +120,8 @@
         display: flex;
       }
     }
-
-    /* When .active class is on nav ul, show it (mobile) */
     nav ul.active {
       display: flex;
-    }
-
-    /* =================== Hero Banner =================== */
-    .hero-section {
-      width: 100%;
-      height: 60vh;
-      max-height: 700px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-slide {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      background-size: cover;
-      background-position: center;
-      transition: opacity 1s ease-in-out;
-      opacity: 0;
-    }
-    .hero-slide.active {
-      opacity: 1;
-    }
-    .hero-dots {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      display: flex;
-      gap: 8px;
-    }
-    .hero-dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background-color: #fff;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: transform 0.3s, background-color 0.3s;
-    }
-    .hero-dot.active {
-      background-color: #ff5722;
-      opacity: 1;
-      transform: scale(1.2);
     }
 
     /* =================== Main Layout =================== */
@@ -490,7 +447,6 @@
     body.dark-mode .flashcard-back {
       background-color: #9c27b0;
     }
-
   </style>
 </head>
 <body>
@@ -498,7 +454,7 @@
   <header>
     <div class="nav-container">
       <div class="logo" onclick="window.location.href='index.html'">
-        Nerowan's Elite English Mastery
+        Nerowan's English Learning Hub
       </div>
       <nav>
         <ul id="navList">
@@ -518,104 +474,84 @@
     </div>
   </header>
 
-  <!-- =================== Hero Banner =================== -->
-  <section class="hero-section">
-    <div class="hero-slide active" 
-         style="background-image: url('https://images.unsplash.com/photo-1573164574239-39b9110346b1?auto=format&w=1200');">
-    </div>
-    <div class="hero-slide" 
-         style="background-image: url('https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?auto=format&w=1200');">
-    </div>
-    <div class="hero-slide" 
-         style="background-image: url('https://images.unsplash.com/photo-1605005771936-4281eee85421?auto=format&w=1200');">
-    </div>
-    <div class="hero-dots">
-      <div class="hero-dot active" onclick="currentSlide(0)"></div>
-      <div class="hero-dot" onclick="currentSlide(1)"></div>
-      <div class="hero-dot" onclick="currentSlide(2)"></div>
-    </div>
-  </section>
-
+  <!-- =================== Main =================== -->
   <main>
-    <!-- =================== Intro Section =================== -->
+    <!-- Intro Section -->
     <section id="intro">
       <h2 class="section-title">Welcome, Nerowan!</h2>
       <div class="intro-grid">
         <div class="intro-card">
-          <h3>Elite Personalization</h3>
-          <p>This site is meticulously crafted for Nerowan's advanced English mastery. Explore specialized vocabularies, in-depth articles, flashcards, and a personal notebook—everything stored locally on this device.</p>
+          <h3>Personalized Learning</h3>
+          <p>Experience advanced English resources tailored for Nerowan’s academic goals, including vocab books, articles, flashcards, and a personal notebook.</p>
         </div>
         <div class="intro-card">
-          <h3>High-Level Resources</h3>
-          <p>Dive into multiple vocab books (Archaeology, Astronomy, Literature) each packed with dozens of advanced words. Achieve a robust understanding across fields.</p>
+          <h3>High-Level Content</h3>
+          <p>Master specialized terminologies (Archaeology, Astronomy, Literature) and enhance reading comprehension with articles above 700 words.</p>
         </div>
         <div class="intro-card">
-          <h3>Seamless Experience</h3>
-          <p>Whether on desktop or mobile, enjoy a refined UI with Dark Mode, hamburger navigation, and interactive components. No servers, no clutter—just pure learning.</p>
+          <h3>Seamless UI</h3>
+          <p>Enjoy a refined, mobile-friendly interface with a hamburger menu, Dark Mode toggle, and local data storage—no external servers required.</p>
         </div>
       </div>
     </section>
 
-    <!-- =================== Vocabulary Index (Multiple Pages) =================== -->
+    <!-- Vocabulary Index -->
     <section id="vocabIndex">
       <h2 class="section-title">Vocabulary Books</h2>
-      <p>Access specialized vocabulary collections, each on a separate page, for deeper focus.</p>
+      <p>Click to open specialized vocabulary in separate pages.</p>
       <div class="intro-grid">
         <div class="intro-card">
           <h3>Archaeology Vocabulary</h3>
-          <p>Explore advanced terms related to excavations, ancient cultures, and more.</p>
-          <a href="vocab-archaeology.html" 
-             style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
+          <p>Explore 30 advanced terms on excavation, ancient cultures, and analysis.</p>
+          <a href="vocab-archaeology.html" style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
             Go to Archaeology
           </a>
         </div>
         <div class="intro-card">
           <h3>Astronomy Vocabulary</h3>
-          <p>Dive into cosmic phenomena, celestial bodies, and specialized astrophysics jargon.</p>
-          <a href="vocab-astronomy.html"
-             style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
+          <p>Discover 30 specialized words covering celestial phenomena, cosmic theories, and more.</p>
+          <a href="vocab-astronomy.html" style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
             Go to Astronomy
           </a>
         </div>
         <div class="intro-card">
           <h3>Literature Vocabulary</h3>
-          <p>Uncover key literary terms, narrative techniques, and stylistic devices.</p>
-          <a href="vocab-literature.html"
-             style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
+          <p>Dive into 30 literary terms, narrative techniques, and thematic devices.</p>
+          <a href="vocab-literature.html" style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
             Go to Literature
           </a>
         </div>
       </div>
     </section>
 
-    <!-- =================== Articles Index =================== -->
+    <!-- Articles Index -->
     <section id="articlesIndex">
       <h2 class="section-title">In-Depth Articles</h2>
-      <p>Each article spans about 700 words or more, covering modern subjects relevant to Nerowan's advanced reading practice.</p>
+      <p>Each article is 700+ words, providing advanced reading practice in diverse topics.</p>
       <div class="articles-links">
         <div class="article-link-card">
           <h4>AI & 21st Century Work Culture</h4>
-          <p>Discover how artificial intelligence is reshaping workplace dynamics...</p>
+          <p>Explore how artificial intelligence reshapes workplace dynamics and ethics...</p>
           <a href="article1.html" target="_blank" class="read-article-btn">Read Article</a>
         </div>
         <div class="article-link-card">
           <h4>Sustainable Living in Modern Cities</h4>
-          <p>Explore eco-friendly strategies, policies, and personal choices for greener urban life...</p>
+          <p>Delve into strategies for eco-friendly urban life and the policies that drive it...</p>
           <a href="article2.html" target="_blank" class="read-article-btn">Read Article</a>
         </div>
         <div class="article-link-card">
           <h4>Evolving Narratives in Contemporary Literature</h4>
-          <p>Dive into how narratives, structures, and cultural themes shape modern fiction...</p>
+          <p>Discover how modern literary styles adapt to changing cultural landscapes...</p>
           <a href="article3.html" target="_blank" class="read-article-btn">Read Article</a>
         </div>
       </div>
     </section>
 
-    <!-- =================== Tools: Countdown & Quote =================== -->
+    <!-- Tools: Countdown & Quote -->
     <div class="tools-grid">
       <div class="tool-card">
         <h4>Countdown to Next Goal</h4>
-        <p>Select a date to see how many days remain until your next milestone.</p>
+        <p>Select a date to see how many days remain.</p>
         <input type="date" id="examDate">
         <button onclick="setCountdown()">Start Countdown</button>
         <div class="countdown-timer" id="countdownTimer"></div>
@@ -628,7 +564,7 @@
       </div>
     </div>
 
-    <!-- =================== Flashcards =================== -->
+    <!-- Flashcards -->
     <section class="flashcard-section" id="flashcards">
       <h4>Create Custom Flashcards</h4>
       <div class="flashcard-form">
@@ -639,10 +575,10 @@
       <div class="flashcards" id="flashcardContainer"></div>
     </section>
 
-    <!-- =================== Notebook =================== -->
+    <!-- Notebook -->
     <section class="notes-section" id="notes-section">
       <h4>Personal Notebook</h4>
-      <p>Keep private notes right in your browser (localStorage). Perfect for reminders or new words encountered.</p>
+      <p>Store private notes or new words, all kept locally on this device.</p>
       <div class="notes-form">
         <input type="text" id="noteTitle" placeholder="Title">
         <textarea id="noteContent" rows="2" placeholder="Note content..."></textarea>
@@ -654,7 +590,7 @@
 
   <!-- =================== Footer =================== -->
   <footer>
-    <p>© 2025 Nerowan's Elite English Mastery. All rights reserved.</p>
+    <p>© 2025 Nerowan's English Learning Hub. All rights reserved.</p>
     <p>Contact: 
       <a href="mailto:neowan2008@icloud.com" style="color:#ffd700;">
         neowan2008@icloud.com
@@ -670,25 +606,6 @@
     hamburger.addEventListener('click', () => {
       navList.classList.toggle('active');
     });
-
-    /* ========== Hero Slideshow ========== */
-    let currentIndex = 0;
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.hero-dot');
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-        dots[i].classList.toggle('active', i === index);
-      });
-    }
-    function currentSlide(index) {
-      currentIndex = index;
-      showSlide(currentIndex);
-    }
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    }, 5000);
 
     /* ========== Dark Mode Toggle ========== */
     const modeToggle = document.getElementById('modeToggle');
@@ -817,7 +734,6 @@
         noteDiv.appendChild(deleteBtn);
         noteDiv.appendChild(titleP);
         noteDiv.appendChild(contentP);
-
         notesList.appendChild(noteDiv);
       });
     }
