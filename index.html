@@ -169,7 +169,7 @@
     /* Articles Section */
     .articles-links {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
     }
     .article-link-card {
@@ -458,9 +458,9 @@
       </div>
       <nav>
         <ul id="navList">
-          <li><a href="index.html#intro">Home</a></li>
-          <li><a href="index.html#vocabIndex">Vocabulary</a></li>
-          <li><a href="index.html#articlesIndex">Articles</a></li>
+          <li><a href="#intro">Home</a></li>
+          <li><a href="#vocabIndex">Vocabulary</a></li>
+          <li><a href="#articlesIndex">Articles</a></li>
           <li><a href="#flashcards">Flashcards</a></li>
           <li><a href="#notes-section">Notebook</a></li>
         </ul>
@@ -481,16 +481,16 @@
       <h2 class="section-title">Welcome, Nerowan!</h2>
       <div class="intro-grid">
         <div class="intro-card">
-          <h3>Personalized Learning</h3>
-          <p>Experience advanced English resources tailored for Nerowan’s academic goals, including vocab books, articles, flashcards, and a personal notebook.</p>
+          <h3>Comprehensive Vocabulary</h3>
+          <p>Explore multiple levels and fields: Gaokao, TOEFL, SAT, and specialized dictionaries like Archaeology, Astronomy, Literature. Each with numerous advanced words.</p>
         </div>
         <div class="intro-card">
-          <h3>High-Level Content</h3>
-          <p>Master specialized terminologies (Archaeology, Astronomy, Literature) and enhance reading comprehension with articles above 700 words.</p>
+          <h3>Tiered Reading Articles</h3>
+          <p>Read intermediate or advanced articles ranging from 500 to 700+ words. Strengthen critical thinking and comprehension skills.</p>
         </div>
         <div class="intro-card">
-          <h3>Seamless UI</h3>
-          <p>Enjoy a refined, mobile-friendly interface with a hamburger menu, Dark Mode toggle, and local data storage—no external servers required.</p>
+          <h3>Interactive Tools</h3>
+          <p>Manage personal Flashcards, local Notebook, plus a Countdown for your next exam or milestone. All data is stored locally for privacy.</p>
         </div>
       </div>
     </section>
@@ -498,26 +498,53 @@
     <!-- Vocabulary Index -->
     <section id="vocabIndex">
       <h2 class="section-title">Vocabulary Books</h2>
-      <p>Click to open specialized vocabulary in separate pages.</p>
+      <p>Select from multiple categories and specialized fields.</p>
       <div class="intro-grid">
         <div class="intro-card">
-          <h3>Archaeology Vocabulary</h3>
-          <p>Explore 30 advanced terms on excavation, ancient cultures, and analysis.</p>
-          <a href="vocab-archaeology.html" style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
+          <h3>Gaokao Vocabulary</h3>
+          <p>High-level words commonly appearing in Chinese college entrance exams (高考).</p>
+          <a href="vocab-gaokao.html"
+             style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
+            Go to Gaokao
+          </a>
+        </div>
+        <div class="intro-card">
+          <h3>TOEFL Vocabulary</h3>
+          <p>Core words for the TOEFL exam, essential for academic reading, listening, and writing.</p>
+          <a href="vocab-toefl.html"
+             style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
+            Go to TOEFL
+          </a>
+        </div>
+        <div class="intro-card">
+          <h3>SAT Vocabulary</h3>
+          <p>Challenging words frequently tested on the SAT, critical for achieving top scores.</p>
+          <a href="vocab-sat.html"
+             style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
+            Go to SAT
+          </a>
+        </div>
+        <div class="intro-card">
+          <h3>Archaeology</h3>
+          <p>Specialized terminologies on excavations, stratigraphy, artifact analysis, etc.</p>
+          <a href="vocab-archaeology.html"
+             style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
             Go to Archaeology
           </a>
         </div>
         <div class="intro-card">
-          <h3>Astronomy Vocabulary</h3>
-          <p>Discover 30 specialized words covering celestial phenomena, cosmic theories, and more.</p>
-          <a href="vocab-astronomy.html" style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
+          <h3>Astronomy</h3>
+          <p>Advanced astrophysics terms, cosmic phenomena, and more.</p>
+          <a href="vocab-astronomy.html"
+             style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
             Go to Astronomy
           </a>
         </div>
         <div class="intro-card">
-          <h3>Literature Vocabulary</h3>
-          <p>Dive into 30 literary terms, narrative techniques, and thematic devices.</p>
-          <a href="vocab-literature.html" style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
+          <h3>Literature</h3>
+          <p>Key literary devices, narrative concepts, rhetorical techniques for avid readers.</p>
+          <a href="vocab-literature.html"
+             style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
             Go to Literature
           </a>
         </div>
@@ -526,22 +553,38 @@
 
     <!-- Articles Index -->
     <section id="articlesIndex">
-      <h2 class="section-title">In-Depth Articles</h2>
-      <p>Each article is 700+ words, providing advanced reading practice in diverse topics.</p>
+      <h2 class="section-title">Reading Articles</h2>
+      <p>Improve reading comprehension and engage with contemporary topics. Choose from Intermediate (500-600 words) or Advanced (700+ words).</p>
+
+      <h3 style="color:#e91e63; margin-top:1rem;">Intermediate Articles</h3>
+      <div class="articles-links" style="margin-bottom:2rem;">
+        <div class="article-link-card">
+          <h4>The Rise of E-Learning</h4>
+          <p>A 500+ word exploration of how online platforms transform modern education...</p>
+          <a href="article4.html" target="_blank" class="read-article-btn">Read Article</a>
+        </div>
+        <div class="article-link-card">
+          <h4>Exploring Minimalist Living</h4>
+          <p>Discover the benefits and challenges of adopting a simpler lifestyle at home...</p>
+          <a href="article5.html" target="_blank" class="read-article-btn">Read Article</a>
+        </div>
+      </div>
+
+      <h3 style="color:#673ab7; margin-top:1rem;">Advanced Articles</h3>
       <div class="articles-links">
         <div class="article-link-card">
           <h4>AI & 21st Century Work Culture</h4>
-          <p>Explore how artificial intelligence reshapes workplace dynamics and ethics...</p>
+          <p>Discover how artificial intelligence reshapes workplace ethics and innovation...</p>
           <a href="article1.html" target="_blank" class="read-article-btn">Read Article</a>
         </div>
         <div class="article-link-card">
           <h4>Sustainable Living in Modern Cities</h4>
-          <p>Delve into strategies for eco-friendly urban life and the policies that drive it...</p>
+          <p>Learn about strategies and policies that drive eco-friendly urban lifestyles...</p>
           <a href="article2.html" target="_blank" class="read-article-btn">Read Article</a>
         </div>
         <div class="article-link-card">
           <h4>Evolving Narratives in Contemporary Literature</h4>
-          <p>Discover how modern literary styles adapt to changing cultural landscapes...</p>
+          <p>Examine how narratives adapt to rapid cultural and technological shifts...</p>
           <a href="article3.html" target="_blank" class="read-article-btn">Read Article</a>
         </div>
       </div>
@@ -578,7 +621,7 @@
     <!-- Notebook -->
     <section class="notes-section" id="notes-section">
       <h4>Personal Notebook</h4>
-      <p>Store private notes or new words, all kept locally on this device.</p>
+      <p>Keep private notes or new words you encounter, all stored locally.</p>
       <div class="notes-form">
         <input type="text" id="noteTitle" placeholder="Title">
         <textarea id="noteContent" rows="2" placeholder="Note content..."></textarea>
