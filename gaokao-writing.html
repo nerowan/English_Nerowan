@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gaokao Writing Practice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* =================== Global / Basic Styles =================== */
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    a {
+      text-decoration: none;
+      color: #4e078e;
+    }
+    body {
+      background: linear-gradient(120deg, #ece9e6 0%, #ffffff 100%);
+      color: #333;
+      line-height: 1.6;
+      margin: 2rem;
+      transition: background-color 0.4s, color 0.4s;
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: #ff5722;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    h1 {
+      color: #4e078e;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #4e078e;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+
+    .content-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .content-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .content-card h2 {
+      color: #673ab7;
+      margin-bottom: 0.5rem;
+    }
+    .content-card p {
+      margin-bottom: 1rem;
+    }
+
+    /* Writing prompts section */
+    .prompt-list {
+      margin: 1rem 0;
+      padding-left: 1rem;
+    }
+    .prompt-list li {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .prompt-list li strong {
+      color: #e91e63;
+    }
+
+    /* Write & Save Composition Form */
+    .writing-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .writing-form input, .writing-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .writing-form button {
+      background-color: #4e078e;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      align-self: flex-start;
+    }
+    .writing-form button:hover {
+      background-color: #3c056d;
+      transform: scale(1.05);
+    }
+
+    /* Saved compositions */
+    .compositions {
+      margin-top: 1rem;
+    }
+    .composition-item {
+      background-color: #f8f8f8;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .composition-item h4 {
+      margin-bottom: 0.5rem;
+      color: #009688;
+    }
+    .delete-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #f44336;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.3rem 0.5rem;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .delete-btn:hover {
+      background-color: #d32f2f;
+      transform: scale(1.1);
+    }
+
+    /* Dark Mode Support */
+    body.dark-mode {
+      background: #1d1f21;
+      color: #ddd;
+    }
+    body.dark-mode .content-card {
+      background-color: #2e2f31;
+      box-shadow: none;
+    }
+    body.dark-mode .composition-item {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-link">&larr; Back to Main Site</a>
+  <h1>Gaokao Writing Practice</h1>
+
+  <!-- 简介: 高考作文介绍 & 李华 -->
+  <div class="content-card">
+    <h2 class="section-title">Overview</h2>
+    <p>
+      In the Chinese Gaokao English exam, writing tasks often feature “Li Hua,” a fictional student who needs to write letters or short essays. These compositions test your ability to communicate effectively in English, following a specific format and word limit.
+    </p>
+    <p>
+      Topics can include invitations, apologies, suggestions, or event announcements. Key points usually involve correct formatting (salutation, body, closing) and coherent paragraph structure.
+    </p>
+  </div>
+
+  <!-- 写作指导 -->
+  <div class="content-card">
+    <h2 class="section-title">General Writing Tips</h2>
+    <ul class="prompt-list">
+      <li><strong>Salutation & Opening:</strong> e.g., “Dear Tom,” or “Hi Mike,”. 1-2 sentences introducing who you are and why you’re writing.</li>
+      <li><strong>Body / Details:</strong> Provide clear, concise points. For Li Hua style letters, mention time, place, reason, etc.</li>
+      <li><strong>Closing & Signature:</strong> e.g. “Yours sincerely,” then “Li Hua.” Keep the tone polite and consistent.</li>
+      <li><strong>Word Count:</strong> Usually around 80-120 words for Gaokao writing. Focus on clarity, not just length.</li>
+      <li><strong>Common Expressions:</strong> “I’m writing to...” / “I would like to invite you to...” / “Thank you for your time...”</li>
+    </ul>
+  </div>
+
+  <!-- 示例题目列表 -->
+  <div class="content-card">
+    <h2 class="section-title">Sample Prompts (Li Hua)</h2>
+    <p>Below are some common Li Hua scenarios to practice:</p>
+    <ul class="prompt-list">
+      <li>
+        <strong>Prompt A:</strong> Li Hua wants to invite a foreign exchange student to the English Club event next Friday.
+      </li>
+      <li>
+        <strong>Prompt B:</strong> Li Hua needs to apologize to a foreign teacher for missing an appointment due to illness.
+      </li>
+      <li>
+        <strong>Prompt C:</strong> Li Hua writes to an international friend about the Spring Festival customs and invites them to join.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 写作练习区 (本地存储) -->
+  <div class="content-card">
+    <h2 class="section-title">Write & Save Your Composition</h2>
+    <p>Use the form below to practice your Li Hua writing. You can store multiple drafts and revisit them at any time (localStorage-based, only on this device).</p>
+    <form class="writing-form" onsubmit="saveComposition(event)">
+      <input type="text" id="compositionTitle" placeholder="Title (e.g. Invitation Letter)">
+      <textarea id="compositionContent" rows="6" placeholder="Write your composition here..."></textarea>
+      <button type="submit">Save Composition</button>
+    </form>
+    <div class="compositions" id="compositionsContainer">
+      <!-- 动态插入已保存的作文 -->
+    </div>
+  </div>
+
+  <!-- JavaScript for saving compositions in localStorage -->
+  <script>
+    let compositionsArray = JSON.parse(localStorage.getItem('gaokaoCompositions')) || [];
+
+    function saveComposition(e) {
+      e.preventDefault();
+      const title = document.getElementById('compositionTitle').value.trim();
+      const content = document.getElementById('compositionContent').value.trim();
+      if(!title && !content) {
+        alert('Please enter a title or some content.');
+        return;
+      }
+      const newItem = {
+        id: Date.now(),
+        title: title || 'Untitled',
+        content: content
+      };
+      compositionsArray.push(newItem);
+      localStorage.setItem('gaokaoCompositions', JSON.stringify(compositionsArray));
+
+      // Clear form
+      document.getElementById('compositionTitle').value = '';
+      document.getElementById('compositionContent').value = '';
+
+      renderCompositions();
+    }
+
+    function renderCompositions() {
+      const container = document.getElementById('compositionsContainer');
+      container.innerHTML = '';
+      compositionsArray.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'composition-item';
+
+        const h4 = document.createElement('h4');
+        h4.textContent = item.title;
+
+        const p = document.createElement('p');
+        p.textContent = item.content;
+
+        const delBtn = document.createElement('button');
+        delBtn.className = 'delete-btn';
+        delBtn.textContent = 'Delete';
+        delBtn.onclick = () => deleteComposition(item.id);
+
+        div.appendChild(h4);
+        div.appendChild(p);
+        div.appendChild(delBtn);
+        container.appendChild(div);
+      });
+    }
+
+    function deleteComposition(id) {
+      compositionsArray = compositionsArray.filter(comp => comp.id !== id);
+      localStorage.setItem('gaokaoCompositions', JSON.stringify(compositionsArray));
+      renderCompositions();
+    }
+
+    window.addEventListener('DOMContentLoaded', renderCompositions);
+  </script>
+</body>
+</html>
