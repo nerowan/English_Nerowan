@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nerowan's Elite English Mastery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* =================== Global Reset & Base Styles =================== */
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+    body {
+      background: linear-gradient(120deg, #ece9e6 0%, #ffffff 100%);
+      color: #333;
+      transition: background-color 0.4s, color 0.4s;
+      overflow-x: hidden;
+    }
+
+    /* =================== Header & Navigation (with Hamburger) =================== */
+    header {
+      width: 100%;
+      background-color: #4e078e; /* Deep violet */
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      position: relative;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    /* Default nav for desktop */
+    nav ul {
+      display: flex;
+      gap: 1rem;
+    }
+    nav li a {
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      color: #fff;
+    }
+    nav li a:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+
+    /* Hamburger icon (hidden by default on desktop) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+    }
+
+    /* Dark/Light Mode Toggle */
+    .mode-toggle {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #fff;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s, transform 0.3s;
+      font-size: 0.9rem;
+      margin-left: 1rem;
+    }
+    .mode-toggle:hover {
+      background-color: #fff;
+      color: #4e078e;
+      transform: scale(1.05);
+    }
+
+    /* =================== Responsive: Mobile Nav =================== */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none; /* hidden by default; replaced by hamburger icon */
+        position: absolute;
+        top: 60px;
+        right: 1rem;
+        background-color: #4e078e;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        border-radius: 8px;
+      }
+      .nav-container {
+        position: relative;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* When .active class is on nav ul, show it (mobile) */
+    nav ul.active {
+      display: flex;
+    }
+
+    /* =================== Hero Banner =================== */
+    .hero-section {
+      width: 100%;
+      height: 60vh;
+      max-height: 700px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-slide {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 1s ease-in-out;
+      opacity: 0;
+    }
+    .hero-slide.active {
+      opacity: 1;
+    }
+    .hero-dots {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      display: flex;
+      gap: 8px;
+    }
+    .hero-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: #fff;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+    .hero-dot.active {
+      background-color: #ff5722;
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    /* =================== Main Layout =================== */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.5rem;
+      color: #4e078e;
+    }
+
+    /* Intro Section */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .intro-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .intro-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .intro-card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: #222;
+    }
+    .intro-card p {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+
+    /* Articles Section */
+    .articles-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .article-link-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .article-link-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .article-link-card h4 {
+      color: #673ab7;
+      margin-bottom: 0.5rem;
+    }
+    .read-article-btn {
+      display: inline-block;
+      background-color: #ff5722;
+      color: #fff;
+      border-radius: 4px;
+      padding: 0.4rem 0.8rem;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    .read-article-btn:hover {
+      background-color: #e64a19;
+      transform: scale(1.05);
+    }
+
+    /* Tools: Countdown & Quote */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .tool-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      transition: transform 0.4s, box-shadow 0.4s;
+      position: relative;
+    }
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .tool-card h4 {
+      margin-bottom: 1rem;
+      color: #e91e63;
+    }
+    .tool-card button {
+      background-color: #4e078e;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .tool-card button:hover {
+      background-color: #3c056d;
+      transform: scale(1.05);
+    }
+    .countdown-timer {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    .random-quote {
+      font-style: italic;
+      margin-bottom: 1rem;
+      color: #444;
+    }
+
+    /* Flashcards */
+    .flashcard-section {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .flashcard-section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .flashcard-section h4 {
+      margin-bottom: 1rem;
+      color: #009688;
+    }
+    .flashcard-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .flashcard-form input {
+      flex: 1 1 150px;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .flashcard-form button {
+      background-color: #009688;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .flashcard-form button:hover {
+      background-color: #00695c;
+      transform: scale(1.05);
+    }
+    .flashcards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .flashcard {
+      width: 150px;
+      height: 100px;
+      background-color: #4e078e;
+      color: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      perspective: 1000px;
+      transition: background-color 0.3s;
+    }
+    .flashcard:hover {
+      background-color: #3c056d;
+    }
+    .flashcard-content {
+      text-align: center;
+      padding: 0.5rem;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .flashcard.flipped .flashcard-content {
+      transform: rotateY(180deg);
+    }
+    .flashcard-front,
+    .flashcard-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+    .flashcard-back {
+      transform: rotateY(180deg);
+      background-color: #ff5722;
+    }
+
+    /* Notebook */
+    .notes-section {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .notes-section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .notes-section h4 {
+      margin-bottom: 1rem;
+      color: #3f51b5;
+    }
+    .notes-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .notes-form input, .notes-form textarea {
+      flex: 1;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 0.5rem;
+    }
+    .notes-form button {
+      background-color: #3f51b5;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .notes-form button:hover {
+      background-color: #303f9f;
+      transform: scale(1.05);
+    }
+    .note-item {
+      border: 1px solid #eee;
+      border-radius: 4px;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    .note-item .delete-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #f44336;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.2rem 0.5rem;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .note-item .delete-btn:hover {
+      background-color: #d32f2f;
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #4e078e;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background: #1d1f21;
+      color: #ddd;
+    }
+    body.dark-mode header {
+      background-color: #111;
+    }
+    body.dark-mode .logo {
+      color: #fff;
+    }
+    body.dark-mode footer {
+      background-color: #111;
+    }
+    body.dark-mode .intro-card,
+    body.dark-mode .article-link-card,
+    body.dark-mode .tool-card,
+    body.dark-mode .flashcard-section,
+    body.dark-mode .notes-section {
+      background-color: #2e2f31;
+      box-shadow: none;
+    }
+    body.dark-mode .flashcard {
+      background-color: #333;
+    }
+    body.dark-mode .flashcard:hover {
+      background-color: #222;
+    }
+    body.dark-mode .flashcard-back {
+      background-color: #9c27b0;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- =================== Header (With Hamburger) =================== -->
+  <header>
+    <div class="nav-container">
+      <div class="logo" onclick="window.location.href='index.html'">
+        Nerowan's Elite English Mastery
+      </div>
+      <nav>
+        <ul id="navList">
+          <li><a href="index.html#intro">Home</a></li>
+          <li><a href="index.html#vocabIndex">Vocabulary</a></li>
+          <li><a href="index.html#articlesIndex">Articles</a></li>
+          <li><a href="#flashcards">Flashcards</a></li>
+          <li><a href="#notes-section">Notebook</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <button class="mode-toggle" id="modeToggle">Dark Mode</button>
+    </div>
+  </header>
+
+  <!-- =================== Hero Banner =================== -->
+  <section class="hero-section">
+    <div class="hero-slide active" 
+         style="background-image: url('https://images.unsplash.com/photo-1573164574239-39b9110346b1?auto=format&w=1200');">
+    </div>
+    <div class="hero-slide" 
+         style="background-image: url('https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?auto=format&w=1200');">
+    </div>
+    <div class="hero-slide" 
+         style="background-image: url('https://images.unsplash.com/photo-1605005771936-4281eee85421?auto=format&w=1200');">
+    </div>
+    <div class="hero-dots">
+      <div class="hero-dot active" onclick="currentSlide(0)"></div>
+      <div class="hero-dot" onclick="currentSlide(1)"></div>
+      <div class="hero-dot" onclick="currentSlide(2)"></div>
+    </div>
+  </section>
+
+  <main>
+    <!-- =================== Intro Section =================== -->
+    <section id="intro">
+      <h2 class="section-title">Welcome, Nerowan!</h2>
+      <div class="intro-grid">
+        <div class="intro-card">
+          <h3>Elite Personalization</h3>
+          <p>This site is meticulously crafted for Nerowan's advanced English mastery. Explore specialized vocabularies, in-depth articles, flashcards, and a personal notebook—everything stored locally on this device.</p>
+        </div>
+        <div class="intro-card">
+          <h3>High-Level Resources</h3>
+          <p>Dive into multiple vocab books (Archaeology, Astronomy, Literature) each packed with dozens of advanced words. Achieve a robust understanding across fields.</p>
+        </div>
+        <div class="intro-card">
+          <h3>Seamless Experience</h3>
+          <p>Whether on desktop or mobile, enjoy a refined UI with Dark Mode, hamburger navigation, and interactive components. No servers, no clutter—just pure learning.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== Vocabulary Index (Multiple Pages) =================== -->
+    <section id="vocabIndex">
+      <h2 class="section-title">Vocabulary Books</h2>
+      <p>Access specialized vocabulary collections, each on a separate page, for deeper focus.</p>
+      <div class="intro-grid">
+        <div class="intro-card">
+          <h3>Archaeology Vocabulary</h3>
+          <p>Explore advanced terms related to excavations, ancient cultures, and more.</p>
+          <a href="vocab-archaeology.html" 
+             style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
+            Go to Archaeology
+          </a>
+        </div>
+        <div class="intro-card">
+          <h3>Astronomy Vocabulary</h3>
+          <p>Dive into cosmic phenomena, celestial bodies, and specialized astrophysics jargon.</p>
+          <a href="vocab-astronomy.html"
+             style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
+            Go to Astronomy
+          </a>
+        </div>
+        <div class="intro-card">
+          <h3>Literature Vocabulary</h3>
+          <p>Uncover key literary terms, narrative techniques, and stylistic devices.</p>
+          <a href="vocab-literature.html"
+             style="display:inline-block; margin-top:0.5rem; color:#4e078e; font-weight:bold;">
+            Go to Literature
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== Articles Index =================== -->
+    <section id="articlesIndex">
+      <h2 class="section-title">In-Depth Articles</h2>
+      <p>Each article spans about 700 words or more, covering modern subjects relevant to Nerowan's advanced reading practice.</p>
+      <div class="articles-links">
+        <div class="article-link-card">
+          <h4>AI & 21st Century Work Culture</h4>
+          <p>Discover how artificial intelligence is reshaping workplace dynamics...</p>
+          <a href="article1.html" target="_blank" class="read-article-btn">Read Article</a>
+        </div>
+        <div class="article-link-card">
+          <h4>Sustainable Living in Modern Cities</h4>
+          <p>Explore eco-friendly strategies, policies, and personal choices for greener urban life...</p>
+          <a href="article2.html" target="_blank" class="read-article-btn">Read Article</a>
+        </div>
+        <div class="article-link-card">
+          <h4>Evolving Narratives in Contemporary Literature</h4>
+          <p>Dive into how narratives, structures, and cultural themes shape modern fiction...</p>
+          <a href="article3.html" target="_blank" class="read-article-btn">Read Article</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== Tools: Countdown & Quote =================== -->
+    <div class="tools-grid">
+      <div class="tool-card">
+        <h4>Countdown to Next Goal</h4>
+        <p>Select a date to see how many days remain until your next milestone.</p>
+        <input type="date" id="examDate">
+        <button onclick="setCountdown()">Start Countdown</button>
+        <div class="countdown-timer" id="countdownTimer"></div>
+      </div>
+
+      <div class="tool-card">
+        <h4>Daily Inspiration</h4>
+        <p class="random-quote" id="randomQuote"></p>
+        <button onclick="generateQuote()">Refresh</button>
+      </div>
+    </div>
+
+    <!-- =================== Flashcards =================== -->
+    <section class="flashcard-section" id="flashcards">
+      <h4>Create Custom Flashcards</h4>
+      <div class="flashcard-form">
+        <input type="text" id="flashcardFront" placeholder="Front (Word/Prompt)">
+        <input type="text" id="flashcardBack" placeholder="Back (Definition/Answer)">
+        <button onclick="addFlashcard()">Add</button>
+      </div>
+      <div class="flashcards" id="flashcardContainer"></div>
+    </section>
+
+    <!-- =================== Notebook =================== -->
+    <section class="notes-section" id="notes-section">
+      <h4>Personal Notebook</h4>
+      <p>Keep private notes right in your browser (localStorage). Perfect for reminders or new words encountered.</p>
+      <div class="notes-form">
+        <input type="text" id="noteTitle" placeholder="Title">
+        <textarea id="noteContent" rows="2" placeholder="Note content..."></textarea>
+        <button onclick="addNote()">Add Note</button>
+      </div>
+      <div id="notesList"></div>
+    </section>
+  </main>
+
+  <!-- =================== Footer =================== -->
+  <footer>
+    <p>© 2025 Nerowan's Elite English Mastery. All rights reserved.</p>
+    <p>Contact: 
+      <a href="mailto:neowan2008@icloud.com" style="color:#ffd700;">
+        neowan2008@icloud.com
+      </a>
+    </p>
+  </footer>
+
+  <!-- =================== JavaScript =================== -->
+  <script>
+    /* ========== Hamburger Menu Toggle (Mobile) ========== */
+    const hamburger = document.getElementById('hamburger');
+    const navList = document.getElementById('navList');
+    hamburger.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+
+    /* ========== Hero Slideshow ========== */
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        dots[i].classList.toggle('active', i === index);
+      });
+    }
+    function currentSlide(index) {
+      currentIndex = index;
+      showSlide(currentIndex);
+    }
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }, 5000);
+
+    /* ========== Dark Mode Toggle ========== */
+    const modeToggle = document.getElementById('modeToggle');
+    modeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      modeToggle.textContent = document.body.classList.contains('dark-mode')
+        ? 'Light Mode'
+        : 'Dark Mode';
+    });
+
+    /* ========== Countdown Timer ========== */
+    let countdownInterval;
+    function setCountdown() {
+      const examDate = document.getElementById('examDate').value;
+      if (!examDate) {
+        alert('Please select a date.');
+        return;
+      }
+      if (countdownInterval) {
+        clearInterval(countdownInterval);
+      }
+      const targetDate = new Date(examDate).getTime();
+      countdownInterval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+        const timerElement = document.getElementById('countdownTimer');
+        if (distance <= 0) {
+          clearInterval(countdownInterval);
+          timerElement.textContent = 'Target date has passed!';
+          return;
+        }
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        timerElement.textContent = `Days left: ${days}`;
+      }, 1000);
+    }
+
+    /* ========== Quotes ========== */
+    const quotes = [
+      "Strive not to be a success, but rather to be of value. — Albert Einstein",
+      "Success is walking from failure to failure with no loss of enthusiasm. — Winston Churchill",
+      "You miss 100% of the shots you don’t take. — Wayne Gretzky",
+      "The future belongs to those who believe in the beauty of their dreams. — Eleanor Roosevelt",
+      "Learning never exhausts the mind. — Leonardo da Vinci",
+      "To have another language is to possess a second soul. — Charlemagne"
+    ];
+    function generateQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('randomQuote').textContent = quotes[randomIndex];
+    }
+    window.addEventListener('DOMContentLoaded', generateQuote);
+
+    /* ========== Flashcards (Local Storage) ========== */
+    let flashcardsArray = JSON.parse(localStorage.getItem('flashcardsData')) || [];
+    function addFlashcard() {
+      const frontText = document.getElementById('flashcardFront').value.trim();
+      const backText = document.getElementById('flashcardBack').value.trim();
+      if (!frontText || !backText) return;
+      flashcardsArray.push({ front: frontText, back: backText });
+      localStorage.setItem('flashcardsData', JSON.stringify(flashcardsArray));
+      document.getElementById('flashcardFront').value = '';
+      document.getElementById('flashcardBack').value = '';
+      renderFlashcards();
+    }
+    function renderFlashcards() {
+      const container = document.getElementById('flashcardContainer');
+      container.innerHTML = '';
+      flashcardsArray.forEach((card, index) => {
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'flashcard';
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'flashcard-content';
+
+        const frontDiv = document.createElement('div');
+        frontDiv.className = 'flashcard-front';
+        frontDiv.textContent = card.front;
+
+        const backDiv = document.createElement('div');
+        backDiv.className = 'flashcard-back';
+        backDiv.textContent = card.back;
+
+        contentDiv.appendChild(frontDiv);
+        contentDiv.appendChild(backDiv);
+        cardDiv.appendChild(contentDiv);
+
+        // Flip on click
+        cardDiv.addEventListener('click', () => {
+          cardDiv.classList.toggle('flipped');
+        });
+
+        container.appendChild(cardDiv);
+      });
+    }
+    window.addEventListener('DOMContentLoaded', renderFlashcards);
+
+    /* ========== Notebook (Local Storage) ========== */
+    let notesArray = JSON.parse(localStorage.getItem('userNotes')) || [];
+    function addNote() {
+      const title = document.getElementById('noteTitle').value.trim();
+      const content = document.getElementById('noteContent').value.trim();
+      if (!title && !content) return;
+      const noteObj = { id: Date.now(), title, content };
+      notesArray.push(noteObj);
+      localStorage.setItem('userNotes', JSON.stringify(notesArray));
+      document.getElementById('noteTitle').value = '';
+      document.getElementById('noteContent').value = '';
+      renderNotes();
+    }
+    function renderNotes() {
+      const notesList = document.getElementById('notesList');
+      notesList.innerHTML = '';
+      notesArray.forEach(note => {
+        const noteDiv = document.createElement('div');
+        noteDiv.className = 'note-item';
+
+        const titleP = document.createElement('p');
+        titleP.textContent = note.title ? `Title: ${note.title}` : 'Untitled Note';
+        const contentP = document.createElement('p');
+        contentP.textContent = note.content;
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.textContent = 'X';
+        deleteBtn.onclick = () => deleteNote(note.id);
+
+        noteDiv.appendChild(deleteBtn);
+        noteDiv.appendChild(titleP);
+        noteDiv.appendChild(contentP);
+
+        notesList.appendChild(noteDiv);
+      });
+    }
+    function deleteNote(id) {
+      notesArray = notesArray.filter(n => n.id !== id);
+      localStorage.setItem('userNotes', JSON.stringify(notesArray));
+      renderNotes();
+    }
+    window.addEventListener('DOMContentLoaded', renderNotes);
+  </script>
+</body>
+</html>
